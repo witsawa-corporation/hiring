@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Witsawa Corporation - We're Hiring!</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+            color: #ffffff;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .company-name {
+            font-size: 1.5rem;
+            color: #e94560;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 15px;
+        }
+
+        .hiring-badge {
+            display: inline-block;
+            background: linear-gradient(45deg, #e94560, #ff6b8a);
+            padding: 12px 35px;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.3rem;
+            animation: pulse 2s infinite;
+            margin-bottom: 15px;
+        }
+
+        .header-subtitle {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1.1rem;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        /* Tab Navigation */
+        .tab-nav {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            color: #ffffff;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .tab-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .tab-btn.active {
+            background: linear-gradient(45deg, #e94560, #ff6b8a);
+            border-color: transparent;
+            box-shadow: 0 4px 20px rgba(233, 69, 96, 0.4);
+        }
+
+        .tab-btn .icon {
+            font-size: 1.3rem;
+        }
+
+        /* Job Cards */
+        .job-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            display: none;
+            animation: fadeIn 0.4s ease;
+        }
+
+        .job-card.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .job-title {
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+            color: #00d9ff;
+            text-align: center;
+            line-height: 1.4;
+        }
+
+        .job-title .position-tag {
+            display: inline-block;
+            background: rgba(0, 217, 255, 0.2);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+
+        .section {
+            margin-bottom: 30px;
+        }
+
+        .section-title {
+            font-size: 1.3rem;
+            color: #e94560;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-title::before {
+            content: '';
+            width: 4px;
+            height: 24px;
+            background: linear-gradient(45deg, #e94560, #ff6b8a);
+            border-radius: 2px;
+        }
+
+        ul {
+            list-style: none;
+            padding-left: 20px;
+        }
+
+        li {
+            position: relative;
+            padding: 10px 0;
+            padding-left: 25px;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        li::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: #00d9ff;
+        }
+
+        .highlight {
+            color: #ffd93d;
+            font-weight: 500;
+        }
+
+        .optional {
+            color: #9ca3af;
+            font-style: italic;
+        }
+
+        /* Shared Benefits Section */
+        .shared-section {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 30px;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .benefit-item {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .benefit-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .benefit-item .icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .benefit-item p {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        /* Apply Section */
+        .apply-section {
+            background: linear-gradient(135deg, rgba(233, 69, 96, 0.2), rgba(0, 217, 255, 0.1));
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .apply-section p {
+            margin: 10px 0;
+            line-height: 1.6;
+        }
+
+        .email-link {
+            color: #00d9ff;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.2rem;
+            transition: color 0.3s;
+        }
+
+        .email-link:hover {
+            color: #ff6b8a;
+        }
+
+        .apply-note {
+            margin-top: 20px;
+            padding: 15px;
+            background: rgba(255, 217, 61, 0.1);
+            border-radius: 10px;
+            border: 1px solid rgba(255, 217, 61, 0.3);
+        }
+
+        .apply-note p {
+            color: #ffd93d;
+            font-weight: 500;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <p class="company-name">Witsawa Corporation</p>
+            <span class="hiring-badge">🚀 WE'RE HIRING!</span>
+            <p class="header-subtitle">Join our team and build awesome products!</p>
+        </div>
+
+        <!-- Tab Navigation -->
+        <div class="tab-nav">
+            <button class="tab-btn active" onclick="showTab('frontend')">
+                <span class="icon">🎨</span>
+                Frontend Developer
+            </button>
+            <button class="tab-btn" onclick="showTab('backend')">
+                <span class="icon">⚙️</span>
+                Backend Developer
+            </button>
+        </div>
+
+        <!-- Frontend Developer Card -->
+        <div id="frontend" class="job-card active">
+            <h1 class="job-title">
+                <span class="position-tag">Exp 1-2 Years</span><br>
+                Frontend Developer
+            </h1>
+
+            <div class="section">
+                <h2 class="section-title">Responsibilities</h2>
+                <ul>
+                    <li>Develop Web Applications that are visually appealing, modern, and user-friendly, following the
+                        Design System.</li>
+                    <li>Connect with the Backend API to ensure accurate and fast data display.</li>
+                    <li>Maintain high-quality code (Clean Code), easy maintainability, and debug before production
+                        deployment.</li>
+                    <li>Collaborate with the Designer and Backend teams to find the best solutions for product
+                        development.</li>
+                    <li>Learn new technologies to improve the performance of web pages.</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">Qualifications</h2>
+                <ul>
+                    <li>1 - 2 years of experience as a Frontend Developer.</li>
+                    <li>Proficiency in <span class="highlight">HTML, CSS, JavaScript (ES6+)</span>.</li>
+                    <li>Experience using Frameworks like <span class="highlight">React / React Native</span> or similar.
+                    </li>
+                    <li>Understanding of Responsive Design and Cross-browser compatibility.</li>
+                    <li>Experience using Git for Version Control management.</li>
+                    <li><span class="optional">(Optional)</span> Knowledge of TypeScript will be a special
+                        consideration.</li>
+                    <li>Possess a good attitude (Can-do attitude), enjoy learning, and can work well in a team.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Backend Developer Card -->
+        <div id="backend" class="job-card">
+            <h1 class="job-title">
+                <span class="position-tag">Exp 1-2 Years</span><br>
+                Backend Developer
+            </h1>
+
+            <div class="section">
+                <h2 class="section-title">Responsibilities</h2>
+                <ul>
+                    <li>Design and develop <span class="highlight">RESTful APIs</span> to support consumption by
+                        Frontend and Mobile Apps.</li>
+                    <li>Design and manage databases for efficiency and scalability.</li>
+                    <li>Write Unit Tests and maintain high code standards, security, and performance.</li>
+                    <li>Troubleshoot technical issues and optimize the backend system.</li>
+                    <li>Collaborate with the Frontend team for seamless system integration.</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">Qualifications</h2>
+                <ul>
+                    <li>1 - 2 years of work experience as a Backend Developer.</li>
+                    <li>Proficient in <span class="highlight">JavaScript</span>.</li>
+                    <li>Knowledge and understanding of databases, both <span class="highlight">Relational (e.g., MySQL,
+                            PostgreSQL)</span> or <span class="highlight">NoSQL (e.g., MongoDB)</span>.</li>
+                    <li>Understand API Design concepts and the HTTP Protocol.</li>
+                    <li>Experience using Git and familiarity with basic Linux or Docker commands.</li>
+                    <li><span class="optional">(Optional)</span> Experience with Cloud Server (AWS/GCP/Azure) or CI/CD
+                        will be a special consideration.</li>
+                    <li>Highly responsible, enjoys Problem Solving, and has effective communication skills.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Shared Benefits Section -->
+        <div class="shared-section">
+            <h2 class="section-title">Benefits</h2>
+            <div class="benefits-grid">
+                <div class="benefit-item">
+                    <div class="icon">🏥</div>
+                    <p>Social Security / Group Insurance</p>
+                </div>
+                <div class="benefit-item">
+                    <div class="icon">🎉</div>
+                    <p>Company Parties or Annual Outing</p>
+                </div>
+                <div class="benefit-item">
+                    <div class="icon">📅</div>
+                    <p>Working Hours Monday - Friday</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Apply Section -->
+        <div class="shared-section">
+            <div class="apply-section">
+                <h2 class="section-title" style="justify-content: center;">How to Apply</h2>
+                <p>Send your <span class="highlight">Resume</span> and <span class="highlight">Portfolio</span> (or
+                    Github) to:</p>
+                <p><a href="mailto:apichan@witsawa.com" class="email-link">📧 apichan@witsawa.com</a></p>
+
+                <div class="apply-note">
+                    <p>📝 Email Subject Format:</p>
+                    <p><strong>Application for [Frontend/Backend] - [Your Name]</strong></p>
+                    <p style="font-size: 0.9rem; margin-top: 10px;">You can apply for multiple positions!</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p>© 2024 Witsawa Corporation. All rights reserved.</p>
+        </div>
+    </div>
+
+    <script>
+        function showTab(tabId) {
+            // Hide all job cards
+            document.querySelectorAll('.job-card').forEach(card => {
+                card.classList.remove('active');
+            });
+
+            // Remove active from all buttons
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+
+            // Show selected tab
+            document.getElementById(tabId).classList.add('active');
+
+            // Add active to clicked button
+            event.currentTarget.classList.add('active');
+        }
+    </script>
+</body>
+
+</html>
